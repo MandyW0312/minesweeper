@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export class App extends Component {
   render() {
     return (
-      <div>
+      <div className="gameboard">
         <header>Minesweeper</header>
         <section>
           <ul>
@@ -73,7 +73,9 @@ export class App extends Component {
             <li></li>
           </ul>
         </section>
-        <footer>This game of Minesweeper was created by Mandy Wade</footer>
+        <footer>
+          <p>This game of Minesweeper was created by Mandy Wade</p>
+        </footer>
       </div>
     )
   }
