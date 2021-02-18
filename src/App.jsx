@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 
 export class App extends Component {
   state = {
-    data: [
+    id: '',
+    board: [
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
@@ -12,11 +13,22 @@ export class App extends Component {
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
     ],
+    state: '',
+    mines: '',
+    difficulty: 0,
+  }
+
+  async componentDidMount() {
+    await fetch('https://minesweeper-api.herokuapp.com/games/10')
+      .then(response => {
+        return response.json()
+      })
+      .then(apiData => this.setState({ board: apiData.board }))
   }
 
   handleClickOnCell = async (theClickedRowIndex, theClickedColumnIndex) => {
     const newState = this.state
-    newState.data[theClickedRowIndex][theClickedColumnIndex] = 'x'
+    newState.board[theClickedRowIndex][theClickedColumnIndex] = 'x'
     this.setState(newState)
 
     const response = await fetch(
@@ -25,9 +37,6 @@ export class App extends Component {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(newState),
-        difficulty: '0',
-        state: 'new',
-        mines: '10',
       }
     )
     const json = await response.json()
@@ -39,7 +48,7 @@ export class App extends Component {
         <header>Minesweeper</header>
         <section>
           <ul>
-            {this.state.data.map((row, rowIndex) => {
+            {this.state.board.map((row, rowIndex) => {
               return row.map((cell, columnIndex) => {
                 return (
                   <li
