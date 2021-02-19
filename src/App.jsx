@@ -26,11 +26,11 @@ export class App extends Component {
       }
     )
     const game = await response.json()
-    console.log(game)
+    this.setState(game)
   }
 
-  handleClickOnCell = async (row, column) => {
-    const url = `https://minesweeper-api.herokuapp.com/games/${this.state.id}`
+  handleClickOnCellCheck = async (row, column) => {
+    const url = `https://minesweeper-api.herokuapp.com/games/${this.state.id}/check`
     const body = { row: row, column: column }
     const response = await fetch(url, {
       method: 'POST',
@@ -55,7 +55,7 @@ export class App extends Component {
                   <li
                     key={columnIndex}
                     onClick={() =>
-                      this.handleClickOnCell(rowIndex, columnIndex)
+                      this.handleClickOnCellCheck(rowIndex, columnIndex)
                     }
                   >
                     {cell}
