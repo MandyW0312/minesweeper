@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 export class App extends Component {
   state = {
-    id: '',
     board: [
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
@@ -13,43 +12,45 @@ export class App extends Component {
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
       [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
     ],
-    state: '',
-    mines: '',
+    state: 'new',
+    mines: 10,
     difficulty: 0,
   }
 
-  async componentDidMount() {
-    await fetch('https://minesweeper-api.herokuapp.com/games/10')
-      .then(response => {
-        return response.json()
-      })
-      .then(apiData => this.setState({ board: apiData.board }))
-  }
-
-  handleClickOnCell = async (theClickedRowIndex, theClickedColumnIndex) => {
-    const newState = this.state
-    newState.board[theClickedRowIndex][theClickedColumnIndex] = 'x'
-    this.setState(newState)
-
+  handleNewGame = async () => {
     const response = await fetch(
       'https://minesweeper-api.herokuapp.com/games',
       {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(newState),
       }
     )
-    const json = await response.json()
+    const game = await response.json()
+    console.log(game)
+  }
+
+  handleClickOnCell = async (row, column) => {
+    const url = `https://minesweeper-api.herokuapp.com/games/${this.state.id}`
+    const body = { row: row, column: column }
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(body),
+    })
+    const game = await response.json()
+    this.setState(game)
   }
 
   render() {
     return (
       <div className="gameboard">
-        <header>Minesweeper</header>
+        <header>
+          Minesweeper - <button onClick={this.handleNewGame}>New Game</button>
+        </header>
         <section>
           <ul>
-            {this.state.board.map((row, rowIndex) => {
-              return row.map((cell, columnIndex) => {
+            {this.state.board.map((boardRow, rowIndex) => {
+              return boardRow.map((cell, columnIndex) => {
                 return (
                   <li
                     key={columnIndex}
