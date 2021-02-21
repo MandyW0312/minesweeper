@@ -60,6 +60,7 @@ export class App extends Component {
   render() {
     let header =
       'The Daleks are out to get you and The Doctor, use the Sonic Screwdriver to Flag the Bombs! ALLONS-Y!'
+
     if (this.state.state === 'won') {
       header = 'FANTASTIC! - You WON!!!!'
     }
