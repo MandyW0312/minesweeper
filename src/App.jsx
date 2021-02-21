@@ -119,7 +119,10 @@ export class App extends Component {
           </table>
         </section>
         <footer>
-          <p>This game of Minesweeper was created by Mandy Wade</p>
+          <p>
+            This game of Invasion of the Daleks Minesweeper was created by Mandy
+            Wade
+          </p>
         </footer>
       </div>
     )
