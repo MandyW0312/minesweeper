@@ -36,7 +36,6 @@ button {
 }
 
 section {
-  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,8 +56,8 @@ tbody {
 }
 
 tr td {
-  height: 23px;
-  width: 23px;
+  height: 40px;
+  width: 40px;
   background-color: #e7eef4;
   text-align: center;
   cursor: pointer;
@@ -77,7 +76,7 @@ tr td {
   text-indent: -9999px;
   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSG8doiGjZjWqwpfOunc8QJ82idspgK264omQ&usqp=CAU;');
   background-repeat: no-repeat;
-  background-size: 23px;
+  background-size: 40px;
 }
 
 .flagbomb {
@@ -85,7 +84,7 @@ tr td {
   text-indent: -9999px;
   background-image: url('https://www.freeiconspng.com/thumbs/tardis-icon/tardis-png-icon-16.jpg');
   background-repeat: no-repeat;
-  background-size: 23px;
+  background-size: 40px;
 }
 
 .bomb {
@@ -93,7 +92,7 @@ tr td {
   text-indent: -9999px;
   background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLxOiBXmwNDai7OQnInZpZ_cBs4xarSEk2gQ&usqp=CAU');
   background-repeat: no-repeat;
-  background-size: 23px;
+  background-size: 40px;
 }
 
 p {
