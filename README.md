@@ -1,4 +1,4 @@
-[Minesweeper](minesweeper-mandywade.netlify.app)
+[Minesweeper](https://minesweeper-mandywade.netlify.app/)
 
 ![Getting Started](Minesweeper.png)
 
